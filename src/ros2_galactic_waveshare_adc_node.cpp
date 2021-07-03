@@ -6,6 +6,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
+#include "ros2_galactic_waveshare_adc_interfaces/msg/waveshare_adc.hpp"
+
+
 using namespace std::chrono_literals;
 
 

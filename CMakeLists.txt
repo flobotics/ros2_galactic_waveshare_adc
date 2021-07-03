@@ -12,9 +12,10 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(ros2_galactic_waveshare_adc_interfaces REQUIRED) 
 
 add_executable(ros2_galactic_waveshare_adc_node src/ros2_galactic_waveshare_adc_node.cpp)
-ament_target_dependencies(ros2_galactic_waveshare_adc_node rclcpp std_msgs)
+ament_target_dependencies(ros2_galactic_waveshare_adc_node rclcpp std_msgs ros2_galactic_waveshare_adc_interfaces)
 
 target_include_directories(ros2_galactic_waveshare_adc_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
