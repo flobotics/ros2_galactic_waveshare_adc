@@ -17,6 +17,9 @@ find_package(ros2_galactic_waveshare_adc_interfaces REQUIRED)
 add_executable(ros2_galactic_waveshare_adc_node src/ros2_galactic_waveshare_adc_node.cpp)
 ament_target_dependencies(ros2_galactic_waveshare_adc_node rclcpp std_msgs ros2_galactic_waveshare_adc_interfaces)
 
+add_library(ADS1256 src/ADS1256.c)
+target_link_libraries(ros2_galactic_waveshare_adc_node ADS1256)
+
 target_include_directories(ros2_galactic_waveshare_adc_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)

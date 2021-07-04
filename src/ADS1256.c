@@ -27,7 +27,7 @@
 # THE SOFTWARE.
 #
 ******************************************************************************/
-#include "ADS1256.h"
+#include "../include/ADS1256.h"
 
 UBYTE ScanMode = 0;
 

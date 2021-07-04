@@ -35,9 +35,9 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "Debug.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
+#include "../include/Debug.h"
 
 
 
