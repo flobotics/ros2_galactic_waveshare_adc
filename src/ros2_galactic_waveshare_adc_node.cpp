@@ -9,7 +9,10 @@
 #include "ros2_galactic_waveshare_adc_interfaces/msg/waveshare_adc.hpp"
 #include "rclcpp/node.hpp"
 
+extern "C" {
 #include "../include/ADS1256.h"
+}
+
 
 
 using namespace std::chrono_literals;
@@ -41,10 +44,18 @@ class WaveshareAdcPublisher : public rclcpp::Node
     {
       auto message = ros2_galactic_waveshare_adc_interfaces::msg::WaveshareAdc();
       ADS1256_GetAll(ADC);
-	  for(count_=0;count_<8;count_++){
+//	  for(count_= 0;count_< 8;count_++){
 //		  printf("%d %f\r\n",count_,ADC[count_]*5.0/0x7fffff);
-		  message.adc0 = ADC[count_]*5.0/0x7fffff;
-	  }
+//		  message.adc0 = ADC[count_]*5.0/0x7fffff;
+//	  }
+      message.adc0 = ADC[0]*5.0/0x7fffff;
+      message.adc1 = ADC[1]*5.0/0x7fffff;
+      message.adc2 = ADC[2]*5.0/0x7fffff;
+      message.adc3 = ADC[3]*5.0/0x7fffff;
+      message.adc4 = ADC[4]*5.0/0x7fffff;
+      message.adc5 = ADC[5]*5.0/0x7fffff;
+      message.adc6 = ADC[6]*5.0/0x7fffff;
+      message.adc7 = ADC[7]*5.0/0x7fffff;
 
 //      message.adc0 = 0.3;
       RCLCPP_INFO(this->get_logger(), "Publishing: '%f'", message.adc0);
@@ -53,7 +64,7 @@ class WaveshareAdcPublisher : public rclcpp::Node
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<ros2_galactic_waveshare_adc_interfaces::msg::WaveshareAdc>::SharedPtr publisher_;
     size_t count_;
-    UDOUBLE ADC[8];
+    uint32_t ADC[8];
 };
 
 int main(int argc, char * argv[])

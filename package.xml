@@ -12,6 +12,8 @@
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>ros2_galactic_waveshare_adc_interfaces</depend>
+  <depend>ros2_galactic_waveshare_adc_lib</depend>
+  <depend>test_lib</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

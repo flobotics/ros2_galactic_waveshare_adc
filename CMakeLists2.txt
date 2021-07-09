@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
 project(ros2_galactic_waveshare_adc C CXX)
 
+#https://answers.ros.org/question/350976/using-ament_cmake-to-build-and-use-a-shared-library/
+
+#https://stash.desy.de/projects/RDA/repos/eudaq53/browse/cmake/FindwiringPi.cmake
+
 #https://answers.ros.org/question/284732/compilation-errors-when-trying-to-link-custom-class/
 #FIND_LIBRARY(WIRINGPI_LIBRARY wiringPi /home/rayvburn/git/wiringPi)
 #target_link_libraries(talker ${catkin_LIBRARIES} ${WIRINGPI_LIBRARY})
@@ -55,10 +59,10 @@ target_compile_definitions(ADS1256 PRIVATE "ADS1256_BUILDING_LIBRARY")
 
 link_directories(/home/ros2/dev_ws/build/ros2_galactic_waveshare_adc/)
 
-#target_include_directories(ros2_galactic_waveshare_adc_node PUBLIC
-#  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#  $<INSTALL_INTERFACE:include>
-#  include)
+target_include_directories(ros2_galactic_waveshare_adc_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+  include)
   
 target_compile_features(ros2_galactic_waveshare_adc_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
